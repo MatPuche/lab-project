@@ -1,0 +1,4 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body><p>N = 45
+</br>1.000000 0.222964 
+</br>0.222964 1.000000 
+</br></p></body></html>
