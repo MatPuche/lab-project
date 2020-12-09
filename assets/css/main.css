@@ -3923,6 +3923,18 @@ input, select, textarea {
 	margin: 0 0 0 0;
 }
 
+#legend_pop{
+	vertical-align: super;
+
+}
+
+#td_legend_pop{
+	margin: 0;
+	width: 15%;
+	vertical-align: super;
+	padding: -1.0em 0.75em ;
+}
+
 #map_table{
 	width: 50%;
 	height: 400px;
@@ -3941,12 +3953,6 @@ input, select, textarea {
 }
 
 
-/*
-.ol-control button {
-	font-size: 1.1em;
-	height: 1.3em;
-	width: 1.3em
-}*/
 
 .ol-mouse-position{
 	right: 55px;
@@ -4006,3 +4012,4 @@ input, select, textarea {
 .ol-attribution {
 	font-size: 12px;
 }
+

@@ -80,6 +80,14 @@ var worldpop_intercomp_final = new ol.layer.Image({
 	})
 });
 
+var addLegend_pop = function () {
+  var graphicUrl = 'http://localhost:8082/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&LAYER=Lab_project_pop:GHS_intercomp_final&LEGEND_OPTIONS=fontSize:11.5;dx:10;mx:0.1;my:0.1;bgColor:0x91b9d1';
+  var img = document.getElementById('legend_pop');
+  img.src = graphicUrl;
+};
+
+addLegend_pop();
+
 var diff_intercomp = new ol.layer.Image({
 	title:'Intercomparison map',
 	visible:true,
@@ -187,13 +195,3 @@ var layerSwitcher3 = new ol.control.LayerSwitcher({});
 map1.addControl(layerSwitcher1);
 map2.addControl(layerSwitcher2);
 map3.addControl(layerSwitcher3);
-
-
-//Legends
-// var addLegend = function () {
-//   var graphicUrl = 'http://localhost:8082/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=Lab_project_pop:GHS_intercomp_final';
-//   var img = document.getElementById('legend');
-//   img.src = graphicUrl;
-// };
-
-// addLegend();
