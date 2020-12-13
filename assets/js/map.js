@@ -58,9 +58,10 @@ var bingAerialWithLabels3 = new ol.layer.Tile({
 
 /*Overlay Layers*/
 
-//Add the Group9 vector layer
 
 //Intercomp layers
+
+//GHS pop layer
 var GHS_intercomp_final = new ol.layer.Image({
 	title:'GHS population count',
 	visible:true,
@@ -70,7 +71,7 @@ var GHS_intercomp_final = new ol.layer.Image({
 	})
 });
 
-
+//World pop layer
 var worldpop_intercomp_final = new ol.layer.Image({
 	title:'Worlpop population count',
 	visible:true,
@@ -80,6 +81,7 @@ var worldpop_intercomp_final = new ol.layer.Image({
 	})
 });
 
+//Legend for GHS and worldpop layers
 var addLegend_pop = function () {
   var graphicUrl = 'http://localhost:8082/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&LAYER=Lab_project_pop:GHS_intercomp_final&LEGEND_OPTIONS=fontSize:11.5;dx:10;mx:0.1;my:0.1;bgColor:0x91b9d1';
   var img = document.getElementById('legend_pop');
@@ -88,6 +90,7 @@ var addLegend_pop = function () {
 
 addLegend_pop();
 
+//Difference layer
 var diff_intercomp = new ol.layer.Image({
 	title:'Intercomparison map',
 	visible:true,
@@ -97,8 +100,46 @@ var diff_intercomp = new ol.layer.Image({
 	})
 });
 
+//Group9 tiles vectors
+
+var vectorSource_group9 = new ol.source.Vector({
+	loader: function(extent,resolution,projection){
+		var url ='http://localhost:8082/geoserver/Lab_project_pop/ows?service=WFS&' +
+		'version=2.0.0&request=GetFeature&typeName=Lab_project_pop:group9_tiles&' +
+		'outputFormat=text/javascript&srsname=EPSG:4326&'+
+		'format_options=callback:loadFeatures';
+		$.ajax({url:url, dataType:'jsonp'});
+	}
+});
+
+var geojsonFormat = new ol.format.GeoJSON();
+
+function loadFeatures(response){
+	vectorSource_group9.addFeatures(geojsonFormat.readFeatures(response));
+}
+
+// var group9_tiles = new ol.layer.Vector({
+// 	title:'Group 9 - Tiles',
+// 	visible: true,
+// 	source: vectorSource_group9,
+// 	style: new ol.style.Style({
+// 		stroke: new ol.style.Stroke({
+// 			color:'rgb(255, 255,255)',
+// 			width:4
+// 		})
+// 	})
+// });
 
 
+var group9_tiles = new ol.layer.Image({
+	title:'Group 9 - Tiles',
+	visible:false,
+	source: new ol.source.ImageWMS({
+		url:"http://localhost:8082/geoserver/wms",
+		params: {'LAYERS' : 'Lab_project_pop:group9_tiles'}
+	}),
+	opacity:0.5
+});
 
 //GHS intercomp map
 var map1 = new ol.Map({
@@ -115,7 +156,7 @@ var map1 = new ol.Map({
 		],
 	view: new ol.View({
 		center:ol.proj.fromLonLat([146,44]),
-		zoom:3.5,
+		zoom:3.3,
 		minZoom:3
 	}),
 	controls: ol.control.defaults().extend([
@@ -168,7 +209,7 @@ var map3 = new ol.Map({
 			}),
 			new ol.layer.Group({
 				title: 'Overlay Layers',
-				layers: [diff_intercomp]
+				layers: [diff_intercomp, group9_tiles]
 			})
 		],
 	view: new ol.View({
@@ -186,6 +227,8 @@ var map3 = new ol.Map({
 		})
 	])
 })
+
+
 
 
 //Layer Switchers
