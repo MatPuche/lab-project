@@ -101,7 +101,6 @@ var diff_intercomp = new ol.layer.Image({
 });
 
 //Group9 tiles vectors
-
 var vectorSource_group9 = new ol.source.Vector({
 	loader: function(extent,resolution,projection){
 		var url ='http://localhost:8082/geoserver/Lab_project_pop/ows?service=WFS&' +
@@ -130,15 +129,43 @@ function loadFeatures(response){
 // 	})
 // });
 
-
+//Tiles correlation layer
 var group9_tiles = new ol.layer.Image({
-	title:'Group 9 - Tiles',
+	title:'Correlation for each tile',
 	visible:false,
 	source: new ol.source.ImageWMS({
 		url:"http://localhost:8082/geoserver/wms",
 		params: {'LAYERS' : 'Lab_project_pop:group9_tiles'}
 	}),
 	opacity:0.5
+});
+
+//Countries border layer
+var countries_borders1 = new ol.layer.Image({
+	title:'Border of countries',
+	visible:false,
+	source: new ol.source.ImageWMS({
+		url:"http://localhost:8082/geoserver/wms",
+		params: {'LAYERS' : 'Lab_project_pop:World_borders'}
+	})
+});
+
+var countries_borders2 = new ol.layer.Image({
+	title:'Border of countries',
+	visible:false,
+	source: new ol.source.ImageWMS({
+		url:"http://localhost:8082/geoserver/wms",
+		params: {'LAYERS' : 'Lab_project_pop:World_borders'}
+	})
+});
+
+var countries_borders3 = new ol.layer.Image({
+	title:'Border of countries',
+	visible:false,
+	source: new ol.source.ImageWMS({
+		url:"http://localhost:8082/geoserver/wms",
+		params: {'LAYERS' : 'Lab_project_pop:World_borders'}
+	})
 });
 
 //GHS intercomp map
@@ -151,7 +178,7 @@ var map1 = new ol.Map({
 			}),
 			new ol.layer.Group({
 				title: 'Overlay Layers',
-				layers: [GHS_intercomp_final]
+				layers: [GHS_intercomp_final,countries_borders1]
 			})
 		],
 	view: new ol.View({
@@ -180,7 +207,7 @@ var map2 = new ol.Map({
 			}),
 			new ol.layer.Group({
 				title: 'Overlay Layers',
-				layers: [worldpop_intercomp_final]
+				layers: [worldpop_intercomp_final,countries_borders2]
 			})
 		],
 	view: new ol.View({
@@ -209,7 +236,7 @@ var map3 = new ol.Map({
 			}),
 			new ol.layer.Group({
 				title: 'Overlay Layers',
-				layers: [diff_intercomp, group9_tiles]
+				layers: [diff_intercomp, group9_tiles,countries_borders3]
 			})
 		],
 	view: new ol.View({
