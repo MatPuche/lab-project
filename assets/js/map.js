@@ -116,7 +116,7 @@ var vectorSource_group9 = new ol.source.Vector({
 	loader: function(extent,resolution,projection){
 		var url ='http://localhost:8082/geoserver/Lab_project_pop/ows?service=WFS&' +
 		'version=2.0.0&request=GetFeature&typeName=Lab_project_pop:group9_tiles&' +
-		'outputFormat=text/javascript&srsname=EPSG:4326&'+
+		'outputFormat=text/javascript&srsname=EPSG:3857&'+
 		'format_options=callback:loadFeatures';
 		$.ajax({url:url, dataType:'jsonp'});
 	}
@@ -128,28 +128,28 @@ function loadFeatures(response){
 	vectorSource_group9.addFeatures(geojsonFormat.readFeatures(response));
 }
 
-// var group9_tiles = new ol.layer.Vector({
-// 	title:'Group 9 - Tiles',
-// 	visible: true,
-// 	source: vectorSource_group9,
-// 	style: new ol.style.Style({
-// 		stroke: new ol.style.Stroke({
-// 			color:'rgb(255, 255,255)',
-// 			width:4
-// 		})
-// 	})
-// });
-
-//Tiles correlation layer
-var group9_tiles = new ol.layer.Image({
-	title:'Correlation for each tile',
-	visible:false,
-	source: new ol.source.ImageWMS({
-		url:"http://localhost:8082/geoserver/wms",
-		params: {'LAYERS' : 'Lab_project_pop:group9_tiles'}
-	}),
-	opacity:0.5
+var group9_tiles = new ol.layer.Vector({
+	title:'Group 9 - Tiles',
+	visible: true,
+	source: vectorSource_group9,
+	style: new ol.style.Style({
+		stroke: new ol.style.Stroke({
+			color:'rgb(255, 255,255)',
+			width:4
+		})
+	})
 });
+
+// //Tiles correlation layer
+// var group9_tiles = new ol.layer.Image({
+// 	title:'Correlation for each tile',
+// 	visible:false,
+// 	source: new ol.source.ImageWMS({
+// 		url:"http://localhost:8082/geoserver/wms",
+// 		params: {'LAYERS' : 'Lab_project_pop:group9_tiles'}
+// 	}),
+// 	opacity:0.5
+// });
 
 //Countries border layer
 var countries_borders1 = new ol.layer.Image({
