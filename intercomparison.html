@@ -53,12 +53,14 @@
 										<td id="map_table"><div id="map_worldpop_interc" class="map"></div>
 											<div id="map_title">WorldPop - Population</div>
 										</td>
-										<td id="td_legend_pop"><img id="legend_pop"/></td>
+										<td id="td_legend_pop">
+											<div class="legend"><img id="legend_pop"/></div>
+											<div id="map_legend">People/km²</div>
+										</td>
 									</tr>
 									
 								</tbody>
 							</table>
-							<p class="title_comments">Comments</p>
 							<p class="comments">These two maps try to reprensent the population over a portion of the east part of the world (China, Japan, Corea and part of Mongolia and Russia). As explained in the introduction part, two different methods have been used to produced the data of each map and it results on differencies on the number of person per pixel. </p>
 							<p class="comments">The same legend have been applied to be abble to make a first eye-level comparison. We chose to start with small increments because <strong>the highest variations are seen from 0 to 100</strong>. The increment is then higher because only small and precise areas such has big cities are concerned by very high density of population.</p>
 							<p class="comments">We chose to add the layer representing the borders of the countries in order to <strong>identify the places with high concentration of people</strong> and to <strong>understand why some areas are shown as deserted</strong>. Indeed, we can clearly identify on the two maps a wide surface with extremely few density of population, notably in the north of our study area. After having linked these areas to Russia and Mongolia lands and knowing that these countries are known to have harsh climatic and geomorphic conditions to live, we understood the huge desert represented on our maps. </p>
@@ -72,9 +74,14 @@
 											<div id="map_diff_interc" class="map_diff"></div>
 											<div id="map_title">Difference: "GHS pop" - "Worldpop"</div>
 										</td>
+										<td id="td_legend_diff">
+											<div class="legend"><img id="legend_diff"/></div>
+											<div id="map_legend">People/km²</div>
+										</td>
 									</tr>
 								</tbody>
 							</table>
+							<p class="comments"> To evaluate more in details the difference between the the two maps we computated <em>"GHS_pop - World_pop"</em> and represented it into a new map, showed just bellow.</p>
 
 							<table>
 								<thead>

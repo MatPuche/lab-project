@@ -100,6 +100,17 @@ var diff_intercomp = new ol.layer.Image({
 	})
 });
 
+//Legend difference layer
+var addLegend_diff = function () {
+  var graphicUrl2 = 'http://localhost:8082/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&LAYER=Lab_project_pop:intercomp_diff&LEGEND_OPTIONS=fontSize:11.5;dx:10;mx:0.1;my:0.1;bgColor:0x91b9d1';
+  var img2 = document.getElementById('legend_diff');
+  img2.src = graphicUrl2;
+};
+
+addLegend_diff();
+
+
+
 //Group9 tiles vectors
 var vectorSource_group9 = new ol.source.Vector({
 	loader: function(extent,resolution,projection){

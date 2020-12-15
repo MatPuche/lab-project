@@ -22,7 +22,7 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -3923,20 +3923,36 @@ input, select, textarea {
 	margin: 0 0 0 0;
 }
 
-#legend_pop{
-	vertical-align: super;
 
+#td_legend_diff{
+	margin: 0;
+	width: 10%;
+	padding: 0em 0.5em ;
 }
 
 #td_legend_pop{
-	margin: 0;
+	margin:0;
+	margin-top: 1em;
 	width: 15%;
 	vertical-align: super;
-	padding: -1.0em 0.75em ;
+	padding: 0.5em 0.5em 0em 0em ;
 }
 
+.legend {
+	margin-top: 10px;
+}
+
+#map_legend{
+	font-size:75%;
+	font-style: italic;
+	text-align: center;
+	margin-left: -20px;
+	margin-top: -9px;
+}
+
+
 #map_table{
-	width: 50%;
+	width: 46%;
 	height: 400px;
 }
 
@@ -3944,6 +3960,7 @@ input, select, textarea {
 	font-size:75%;
 	font-style: italic;
 	text-align: center;
+	margin-top: 5px;
 }
 
 .map_diff { 
@@ -4021,8 +4038,3 @@ input, select, textarea {
 	margin: 0 0 1em 0;
 }
 
-
-.title_comments {
-	font-style: italic !important;
-	margin: 0 0 0.5em 0;
-}
