@@ -4038,3 +4038,49 @@ input, select, textarea {
 	margin: 0 0 1em 0;
 }
 
+.p_list{
+	text-indent: 25px;
+	text-align: justify;
+	padding-right: 1em;
+	padding-left: 1em;
+	margin: 0 0 0.5em 0;
+}
+
+.classified {
+	margin-left: 70px;
+	padding-bottom: 0em;
+}
+
+.stats_td {
+	width:40%;
+}
+
+.stats_table {
+	padding: 0.5em 0.75em;
+	margin: 0 0 0 0;
+	width: 90%;
+	margin-left: auto;
+ 	margin-right: auto;
+}
+
+.table_2parts tbody tr:nth-child(2n+1){
+	background-color: rgb(49, 36, 80);
+}
+
+
+.td_comments{
+	background-color: rgb(49, 36, 80);
+	margin:50px;
+}
+
+.td_comment .stats_td{
+	border-color: rgb(49, 36, 80);
+	border-left: 0;
+	border-right: 0;
+}
+
+.stats_tr{
+	border-color: rgb(49, 36, 80);
+	border-left: 0;
+	border-right: 0;
+}

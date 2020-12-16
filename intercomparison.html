@@ -65,7 +65,7 @@
 							<p class="comments">The same legend have been applied to be abble to make a first eye-level comparison. We chose to start with small increments because <strong>the highest variations are seen from 0 to 100</strong>. The increment is then higher because only small and precise areas such has big cities are concerned by very high density of population.</p>
 							<p class="comments">We chose to add the layer representing the borders of the countries in order to <strong>identify the places with high concentration of people</strong> and to <strong>understand why some areas are shown as deserted</strong>. Indeed, we can clearly identify on the two maps a wide surface with extremely few density of population, notably in the north of our study area. After having linked these areas to Russia and Mongolia lands and knowing that these countries are known to have harsh climatic and geomorphic conditions to live, we understood the huge desert represented on our maps. </p>
 							<p class="comments">With regard to the populated areas, at first sight the Worldpop map shows more colors than the GHS-pop one. We can therefore think that more people are counted with the Worldpop method, but we will see in the following that the difference is more a question of <strong>desagragation</strong>. Indeed, the two rasters are built starting from the <strong>census data bases </strong>but, while the Worldpop method desaggregates this data, the GHS-pop method mixes it with the proportion of build-up areas. It results that the <strong>Worldpop raster is more sparsed over the territory </strong>and the <strong>GHS-pop one more agregated into buildings </strong> (making it easier to identify cities).
-							<p class="comments"> To evaluate more in details the difference between the the two maps we computated <em>"GHS_pop - World_pop"</em> and represented it into a new map, showed just bellow.</p>
+							<p class="comments"> To evaluate more in details the difference between the the two maps we computated <em>"GHS_pop - World_pop"</em> and represented it into a new map, showed just bellow int he "difference" layer.</p>
 							<br>
 							<table>
 								<tbody>
@@ -81,24 +81,99 @@
 									</tr>
 								</tbody>
 							</table>
-							<p class="comments"> To evaluate more in details the difference between the the two maps we computated <em>"GHS_pop - World_pop"</em> and represented it into a new map, showed just bellow.</p>
+							<p class="p_list">This map <strong>highlights the differencies, represented by the colours</strong>. While in the purple pixels the Worldpop value is higher than the GHS one, in the green areas it is lower. Therefore, the less colorful is a pixel, the more similar are the two maps. If we zoom on the populated areas, we discover that, on the whole, the map tends to be more purple than green, which could mean that <strong>in average the Worldpop pixels value are higher than the GHS one</strong>. To go deeper into this hypothesis and verify it, we decided to represent the map of differencies into 3 classes:</p>
+								<ul class="classified">
+									<li>0 : when GHS and Worldpop are exacly equals (green)</li>
+									<li>1 : when GHS is higher than WorldPop (blue)</li>
+									<li>2 : when GHS is lower than WorldPop (pink)</li>
+								</ul>
+							<p class="p_list">Using the QGIS raster tool called "raster layer unique values report", we have then computed the number of cell per class, which resulted in :
+							<ul class="classified">
+									<li>GHS = Worldpop : 12 410 983 px (59%)</li>
+									<li>GHS > WorldPop : 1 399 605 px (7%)</li>
+									<li>GHS < WorldPop : 7 276 205 px (34%)</li>
+							</ul>
+							<p class="p_list">Thus, this new classification enables us to bring two conclusions: </p>
+							<p class="comments">First, <strong>GHS and Worldpop are similar for more than half of the map (59%)</strong>. If we look at the "reclassified difference" layer, we can see that most of the green areas (corresponding to the GHS = Worldpop class) is located in the north of our study area. This corresponds to the less populated territories. So <strong>the two maps are similar in the less populated regions</strong>.</p>
+							<p class="comments"> Then, regarding the pixels containing a difference, <strong>there are much more pixels with higher value for the Wordlpop raster than the GHS one</strong>. If we look again at the "reclassified difference" layer, we see that the blue pixels (corresponding to the GHS > Worldpop class) are more located in the urban areas, where green and pink pixels seem to be more equally distributed. But the more we move away from urban areas, the more pink pixels there are, untill we reach the green pixels. As a result of this classification, we conclude that <strong>the Worldpop raster is more sparsed than the GHS one</strong>. </p>
+							<p class="comments">However, this first classification is not sufficient. It indicates that there are differencies but disregards the value of these differencies, which could make us think at first instance that more people are counted on the Worldpop map than the GHS one. But this assumption being unsatisfactory, we computed some statistics from the values of the difference map. The interesting results are commented in the following.
+							</p>
 
-							<table>
-								<thead>
-									<tr>
-										<th>Statistics</th>
-										<th>Comments</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-										</td>
-										<td>
-											<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-										</td>
+
+							<table class="table_2parts" >
+								<tr class="stats_tr">
+									<td class="stats_td">
+
+										<table class="stats_table">
+											<thead>
+												<tr>
+													<th>Statistics measure</th>
+													<th>Value</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														Mean
+													</td>
+													<td>
+														-0.3527
+													</td>
+												</tr>
+												<tr>
+													<td>
+														Mean of absolute values
+													</td>
+													<td>
+														43,4304
+													</td>
+													
+												</tr>
+												<tr>
+													<td>
+														Minimum
+													</td>
+													<td>
+														-54 941
+													</td>
+													
+												</tr>
+												<tr>
+													<td>
+														Maximum
+													</td>
+													<td>
+														56 765
+													</td>
+													
+												</tr>
+												<tr>
+													<td>
+														Standard deviation
+													</td>
+													<td>
+														265.6321
+													</td>
+													
+												</tr>
+												<tr>
+													<td>
+														Non null cells
+													</td>
+													<td>
+														46%
+													</td>
+												
+												</tr>
+											</tbody>
+										</table>
+									</td>
+									<td class="td_comments">
+										<p class="comments">The mean is closed to 0, which reveals that in average, on the whole area of study, <strong>the two rasters counted a similar number of people</strong>. As the mean is negative, the Worldpop count is in average slightly higher than the GHS one.</p>
+									</td>
+								</tr>
 							</table>
+									
 					</section>
 
 			</div>
@@ -122,6 +197,6 @@
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/map.js"></script>
 			
-			
+			 
 	</body>
 </html>

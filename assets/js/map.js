@@ -90,14 +90,16 @@ var addLegend_pop = function () {
 
 addLegend_pop();
 
+
 //Difference layer
 var diff_intercomp = new ol.layer.Image({
-	title:'Intercomparison map',
+	title:'Difference',
 	visible:true,
 	source: new ol.source.ImageWMS({
 		url:"http://localhost:8082/geoserver/wms",
 		params: {'LAYERS' : 'Lab_project_pop:intercomp_diff'}
 	})
+
 });
 
 //Legend difference layer
@@ -108,6 +110,17 @@ var addLegend_diff = function () {
 };
 
 addLegend_diff();
+
+//Intercomp difference reclassified layer
+var diff_intercomp_rec = new ol.layer.Image({
+	title:'Reclassified difference',
+	visible:false,
+	source: new ol.source.ImageWMS({
+		url:"http://localhost:8082/geoserver/wms",
+		params: {'LAYERS' : 'Lab_project_pop:intercomp_diff_rec'}
+	})
+
+});
 
 
 
@@ -130,26 +143,36 @@ function loadFeatures(response){
 
 var group9_tiles = new ol.layer.Vector({
 	title:'Group 9 - Tiles',
-	visible: true,
-	source: vectorSource_group9,
-	style: new ol.style.Style({
-		stroke: new ol.style.Stroke({
-			color:'rgb(255, 255,255)',
-			width:4
-		})
-	})
+	visible: false,
+	source: vectorSource_group9
 });
 
-// //Tiles correlation layer
-// var group9_tiles = new ol.layer.Image({
-// 	title:'Correlation for each tile',
-// 	visible:false,
-// 	source: new ol.source.ImageWMS({
-// 		url:"http://localhost:8082/geoserver/wms",
-// 		params: {'LAYERS' : 'Lab_project_pop:group9_tiles'}
-// 	}),
-// 	opacity:0.5
-// });
+//Styling the group9_tiles vector
+group9_tiles.setStyle(function(feature) {
+  let fillColor;
+  const correlation = feature.get('correlatio');
+  if (correlation < 0.14) {
+    fillColor = 'rgba(215, 25, 28, 0.5)';
+  } else if (correlation < 0.35) {
+    fillColor = 'rgba(253, 174, 97, 0.5)';
+  } else if (correlation < 0.55) {
+    fillColor = 'rgba(255, 255, 140, 0.5)';
+  } else if (correlation < 0.76) {
+    fillColor = 'rgba(171, 221, 164, 0.5)';
+  } else {
+    fillColor = 'rgba(43, 131, 186, 0.5)';
+  }
+  return new ol.style.Style({
+    fill: new ol.style.Fill({
+      color: fillColor
+    }),
+    stroke: new ol.style.Stroke({
+      color: 'rgba(35, 35, 35,0.5)',
+      width: 1
+    })
+  });
+});
+
 
 //Countries border layer
 var countries_borders1 = new ol.layer.Image({
@@ -179,6 +202,7 @@ var countries_borders3 = new ol.layer.Image({
 	})
 });
 
+
 //GHS intercomp map
 var map1 = new ol.Map({
 	target:document.getElementById('map_GHS_interc'),
@@ -203,7 +227,7 @@ var map1 = new ol.Map({
 		new ol.control.OverviewMap(),
 		new ol.control.MousePosition({
 			coordinateFormat: ol.coordinate.createStringXY(4),
-			projection:'EPSG:4326'
+			projection:'EPSG:3857'
 		})
 	])
 });
@@ -232,7 +256,7 @@ var map2 = new ol.Map({
 		new ol.control.OverviewMap(),
 		new ol.control.MousePosition({
 			coordinateFormat: ol.coordinate.createStringXY(4),
-			projection:'EPSG:4326'
+			projection:'EPSG:3857'
 		})
 	])
 });
@@ -247,7 +271,7 @@ var map3 = new ol.Map({
 			}),
 			new ol.layer.Group({
 				title: 'Overlay Layers',
-				layers: [diff_intercomp, group9_tiles,countries_borders3]
+				layers: [diff_intercomp,diff_intercomp_rec, group9_tiles,countries_borders3]
 			})
 		],
 	view: new ol.View({
@@ -261,7 +285,7 @@ var map3 = new ol.Map({
 		new ol.control.OverviewMap(),
 		new ol.control.MousePosition({
 			coordinateFormat: ol.coordinate.createStringXY(4),
-			projection:'EPSG:4326'
+			projection:'EPSG:3857'
 		})
 	])
 })
