@@ -1,4 +1,4 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body><p>N = 1374206
-</br>1.000000 0.920805 
-</br>0.920805 1.000000 
+</br>1.000000 0.923265  
+</br>0.923265 1.000000 
 </br></p></body></html>
