@@ -3947,7 +3947,7 @@ input, select, textarea {
 	font-style: italic;
 	text-align: center;
 	margin-left: -20px;
-	margin-top: -9px;
+	margin-top: 0px;
 }
 
 
@@ -3961,6 +3961,13 @@ input, select, textarea {
 	font-style: italic;
 	text-align: center;
 	margin-top: 5px;
+}
+
+#map_title_diff{
+	font-size:75%;
+	font-style: italic;
+	text-align: center;
+	margin-top: 0;
 }
 
 .map_diff { 
