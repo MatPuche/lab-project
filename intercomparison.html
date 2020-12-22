@@ -13,9 +13,10 @@
 
 		<!--jQuery-->
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-		<!-- Bootstrap
+		
+		<!--Bootstrap-->
 		<link rel="stylesheet" href="libraries/v6.4.3/apidoc/styles/bootstrap.min.css" type="text/css">
-		<script src="libraries/v6.4.3/apidoc/scripts/bootstrap.bundle.min.js"></script> -->
+		<script src="libraries/v6.4.3/apidoc/scripts/bootstrap.bundle.min.js"></script>
 		
 
 		 <link rel="stylesheet" href="assets/css/main.css" />
@@ -61,17 +62,20 @@
 									
 								</tbody>
 							</table>
+							<p class="title_section">First comments on the two maps</p>
 							<p class="comments">These two maps try to reprensent the population over a portion of the east part of the world (China, Japan, Corea and part of Mongolia and Russia). As explained in the introduction part, two different methods have been used to produced the data of each map and it results on differencies on the number of person per pixel. </p>
 							<p class="comments">The same legend have been applied to be abble to make a first eye-level comparison. We chose to start with small increments because <strong>the highest variations are seen from 0 to 100</strong>. The increment is then higher because only small and precise areas such has big cities are concerned by very high density of population.</p>
 							<p class="comments">We chose to add the layer representing the borders of the countries in order to <strong>identify the places with high concentration of people</strong> and to <strong>understand why some areas are shown as deserted</strong>. Indeed, we can clearly identify on the two maps a wide surface with extremely few density of population, notably in the north of our study area. After having linked these areas to Russia and Mongolia lands and knowing that these countries are known to have harsh climatic and geomorphic conditions to live, we understood the huge desert represented on our maps. </p>
-							<p class="comments">With regard to the populated areas, at first sight the Worldpop map shows more colors than the GHS-pop one. We can therefore think that more people are counted with the Worldpop method, but we will see in the following that the difference is more a question of <strong>desagragation</strong>. Indeed, the two rasters are built starting from the <strong>census data bases </strong>but, while the Worldpop method desaggregates this data, the GHS-pop method mixes it with the proportion of build-up areas. It results that the <strong>Worldpop raster is more sparsed over the territory </strong>and the <strong>GHS-pop one more agregated into buildings </strong> (making it easier to identify cities).
-							<p class="comments"> To evaluate more in details the difference between the the two maps we computated <em>"GHS_pop - World_pop"</em> and represented it into a new map, showed just bellow int he "difference" layer.</p>
+							<p class="comments">With regard to the populated areas, at first sight the Worldpop map shows more colors than the GHS-pop one. We can therefore think that more people are counted with the Worldpop method, but we will see in the following that the difference is more a question of <strong>desagragation</strong>. Indeed, the two rasters are built starting from the <strong>census data bases </strong>but, while the Worldpop method desaggregates this data, the GHS-pop method mixes it with the proportion of build-up areas. It results that the <strong>Worldpop raster is more sparsed over the territory </strong>and the <strong>GHS-pop one more agregated into buildings </strong> (making it easier to identify cities).</p>
+							<p class="comments"> To evaluate more in details the difference between the two maps we computated <em>"GHS_pop - World_pop"</em> and represented it into a new map, showed just bellow int he "difference" layer.</p>
 							<br>
 							<table>
 								<tbody>
 									<tr>
 										<td>
-											<div id="map_diff_interc" class="map_diff"></div>
+											<div id="map_diff_interc" class="map_diff">
+												<div id="popup"></div>
+											</div>
 											<div id="map_title">Difference: "GHS pop" - "Worldpop"</div>
 										</td>
 										<td id="td_legend_diff">
@@ -81,13 +85,14 @@
 									</tr>
 								</tbody>
 							</table>
+							<p class="title_section">Analysis of "difference" and "reclassified difference" layers</p>
 							<p class="p_list">This map <strong>highlights the differencies, represented by the colours</strong>. While in the purple pixels the Worldpop value is higher than the GHS one, in the green areas it is lower. Therefore, the less colorful is a pixel, the more similar are the two maps. If we zoom on the populated areas, we discover that, on the whole, the map tends to be more purple than green, which could mean that <strong>in average the Worldpop pixels value are higher than the GHS one</strong>. To go deeper into this hypothesis and verify it, we decided to represent the map of differencies into 3 classes:</p>
 								<ul class="classified">
 									<li>0 : when GHS and Worldpop are exacly equals (green)</li>
 									<li>1 : when GHS is higher than WorldPop (blue)</li>
 									<li>2 : when GHS is lower than WorldPop (pink)</li>
 								</ul>
-							<p class="p_list">Using the QGIS raster tool called "raster layer unique values report", we have then computed the number of cell per class, which resulted in :
+							<p class="p_list">Using the QGIS raster tool called "raster layer unique values report", we have then computed the number of cell per class, which resulted in :</p>
 							<ul class="classified">
 									<li>GHS = Worldpop : 12 410 983 px (59%)</li>
 									<li>GHS > WorldPop : 1 399 605 px (7%)</li>
@@ -96,8 +101,11 @@
 							<p class="p_list">Thus, this new classification enables us to bring two conclusions: </p>
 							<p class="comments">First, <strong>GHS and Worldpop are similar for more than half of the map (59%)</strong>. If we look at the "reclassified difference" layer, we can see that most of the green areas (corresponding to the GHS = Worldpop class) is located in the north of our study area. This corresponds to the less populated territories. So <strong>the two maps are similar in the less populated regions</strong>.</p>
 							<p class="comments"> Then, regarding the pixels containing a difference, <strong>there are much more pixels with higher value for the Wordlpop raster than the GHS one</strong>. If we look again at the "reclassified difference" layer, we see that the blue pixels (corresponding to the GHS > Worldpop class) are more located in the urban areas, where green and pink pixels seem to be more equally distributed. But the more we move away from urban areas, the more pink pixels there are, untill we reach the green pixels. As a result of this classification, we conclude that <strong>the Worldpop raster is more sparsed than the GHS one</strong>. </p>
-							<p class="comments">However, this first classification is not sufficient. It indicates that there are differencies but disregards the value of these differencies, which could make us think at first instance that more people are counted on the Worldpop map than the GHS one. But this assumption being unsatisfactory, we computed some statistics from the values of the difference map. The interesting results are commented in the following.
+							<p class="comments">However, this first classification is not sufficient. It indicates that there are differencies but disregards the value of these differencies, which could make us think at first instance that more people are counted on the Worldpop map than the GHS one. But this assumption being unsatisfactory, we computed some statistics from the values of the difference map. Some relevant results are commented in the following section.
 							</p>
+							<br>
+
+							<p class="title_section">General statistics</p>
 
 
 							<table class="table_2parts" >
@@ -149,6 +157,15 @@
 												</tr>
 												<tr>
 													<td>
+														Range
+													</td>
+													<td>
+														111 696
+													</td>
+													
+												</tr>
+												<tr>
+													<td>
 														Standard deviation
 													</td>
 													<td>
@@ -169,11 +186,34 @@
 										</table>
 									</td>
 									<td class="td_comments">
-										<p class="comments">The mean is closed to 0, which reveals that in average, on the whole area of study, <strong>the two rasters counted a similar number of people</strong>. As the mean is negative, the Worldpop count is in average slightly higher than the GHS one.</p>
+										<p class="comments">The mean is close to 0, which reveals that in average, on the whole area of study, <strong>the two rasters counted a similar number of people</strong>. As the mean is negative, the Worldpop count is in average slightly higher than the GHS one, but this difference is really small (0.35 compared to the range of 111 696).</p>
+										<p class="comments">The mean of absolute value enables us to know that, in average, the difference of the two maps in one pixel is of 43,4304 persons. This is not negligeable and reveals that the two maps are not similar in each pixel. <strong>They counted the same number of people on the whole area of study but they didn't position them exactly in the same place</strong>. This is confirmed by the very high values of minimum and maximum (respectively -54 941 and 56 765). To evaluate if the difference of position is high, we decided to compute the mean, the minimum and the maximum of the "difference" raster in each tile. The next section will present and explain the results of this calculation.</p>
 									</td>
 								</tr>
 							</table>
-									
+							<p class="comments">The standard deviation is also very high and indicates that <strong>the values over the area of study are spread over a wide range around the mean</strong> which corroborates the previous comments. The dispersion is high because in average the pixels don't have the same value, they only have values that offset each other on the whole.</p>
+							<p class="comments">The non null cells represent only 46% of the total cells and this is due to the presence of water in our area of study. Some tiles have a very few number of non-null cells, which could lead to strangenesses in our results, in particular for the correlation between the two maps, but we will see this later in the dedicated section.</p>
+							<br>
+						
+					<p class="title_section">Statistics per tile: Mean, Min and Max</p>
+					<p class="comments">As said before, we computed the mean value per tile of the "difference" raster in order to evaluate if even in smaller areas the two maps counted a similar number of people. We decided to represent the results in a graph.</p>
+					<span><img src="images/Mean_per_tile.jpg" alt="" /></span>
+					<p class="comments">This graph brings out some tiles for which the difference is further away from 0 than others. Indeed, while 21 tiles have a mean difference close to 0, we can identify 6 tiles with a higher mean (in absolute value): the tiles 128, 153, 154, 177, 178 and 180.</p>
+					<p class="comments">If we look at the corresponding areas we discover that all these tiles cover a water area with very small lands. Therefore, these tiles are mostly composed by null cells and the mean is computed with only a few pixels. As the pixels value are in average different of 43 person/km² and only offset each other on the whole, <strong>the smaller the number of pixels used for the computation, the more the mean is likely to differ from 0</strong>. Thus, we can consider that these tiles are not meaningful for our mean per tile analysis and conclude that <strong>in each tile the two maps counted a similar number of people</strong>. </p>
+					<p class="comments">Then, we computed the minimum and maximum value per tile and represented it on the following graph.</p>
+					<span><img src="images/Min_and_max_per_tile.PNG" alt="" /></span>
+					<p class="comments">This second graph brings to light that in tiles where minimum (in absolute value) is high, the maximum in the same tile is also high with a similar value of difference. This means that <strong>people have just been counted on a different pixel, but a quite close one since it is in the same tile. </strong>
+					<br>
+
+					<p class="title_section">Statistics per tile: Correlation factor</p>
+					<p class="comments"></p>
+					<br>
+
+					<p class="title_section">Conlusion of intercomparison</p>
+					<p class="comments"></p>
+					<br>
+					
+
 					</section>
 
 			</div>

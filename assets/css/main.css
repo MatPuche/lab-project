@@ -3970,6 +3970,10 @@ input, select, textarea {
 }
 
 
+#popover{
+	width: 200px;
+	height: auto;
+}
 
 .ol-mouse-position{
 	right: 55px;
@@ -4067,6 +4071,9 @@ input, select, textarea {
 	background-color: rgb(49, 36, 80);
 }
 
+.table_2parts{
+	margin: 0 0 1em 0;
+}
 
 .td_comments{
 	background-color: rgb(49, 36, 80);
@@ -4084,3 +4091,32 @@ input, select, textarea {
 	border-left: 0;
 	border-right: 0;
 }
+
+
+
+.title_section {
+		margin: 0 0 1em 0;
+		position: relative;
+		padding-bottom: 0.35em;
+		font-style: italic;
+		font-size: 20px;
+		color:#7A5DBE;
+	}
+
+.title_section:after {
+		background-image: -moz-linear-gradient(to right, #5e42a6, #b74e91);
+		background-image: -webkit-linear-gradient(to right, #5e42a6, #b74e91);
+		background-image: -ms-linear-gradient(to right, #5e42a6, #b74e91);
+		background-image: linear-gradient(to right, #5e42a6, #b74e91);
+		-moz-transition: max-width 0.2s ease;
+		-webkit-transition: max-width 0.2s ease;
+		-ms-transition: max-width 0.2s ease;
+		transition: max-width 0.2s ease;
+		border-radius: 0.2em;
+		bottom: 0;
+		content: '';
+		height: 0.05em;
+		position: absolute;
+		right: 0;
+		width: 100%;
+		}

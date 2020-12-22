@@ -151,7 +151,7 @@ var group9_tiles = new ol.layer.Vector({
 group9_tiles.setStyle(function(feature) {
   let fillColor;
   const correlation = feature.get('correlatio');
-  if (correlation < 0.14) {
+  if (correlation < 0.15) {
     fillColor = 'rgba(215, 25, 28, 0.5)';
   } else if (correlation < 0.35) {
     fillColor = 'rgba(253, 174, 97, 0.5)';
@@ -217,7 +217,7 @@ var map1 = new ol.Map({
 			})
 		],
 	view: new ol.View({
-		center:ol.proj.fromLonLat([146,44]),
+		center:ol.proj.fromLonLat([144,47]),
 		zoom:3.3,
 		minZoom:3
 	}),
@@ -246,8 +246,8 @@ var map2 = new ol.Map({
 			})
 		],
 	view: new ol.View({
-		center:ol.proj.fromLonLat([146,44]),
-		zoom:3.5,
+		center:ol.proj.fromLonLat([144,47]),
+		zoom:3.3,
 		minZoom:3
 	}),
 	controls: ol.control.defaults().extend([
@@ -275,8 +275,8 @@ var map3 = new ol.Map({
 			})
 		],
 	view: new ol.View({
-		center:ol.proj.fromLonLat([149,44]),
-		zoom:4.3,
+		center:ol.proj.fromLonLat([150,45]),
+		zoom:4.1,
 		minZoom:3.8
 	}),
 	controls: ol.control.defaults().extend([
@@ -292,7 +292,6 @@ var map3 = new ol.Map({
 
 
 
-
 //Layer Switchers
 var layerSwitcher1 = new ol.control.LayerSwitcher({});
 var layerSwitcher2 = new ol.control.LayerSwitcher({});
@@ -300,3 +299,37 @@ var layerSwitcher3 = new ol.control.LayerSwitcher({});
 map1.addControl(layerSwitcher1);
 map2.addControl(layerSwitcher2);
 map3.addControl(layerSwitcher3);
+
+
+//Popup
+var elementPopup = document.getElementById('popup');
+var popup = new ol.Overlay({
+	element: elementPopup
+});
+
+map3.addOverlay(popup);
+
+map3.on('click',function(event){
+	var feature = map3.forEachFeatureAtPixel(
+		event.pixel,function(feature,layer){return feature;}
+		);
+	if(feature !=null){
+		var pixel = event.pixel;
+		var coord = map3.getCoordinateFromPixel(pixel);
+		popup.setPosition(coord);
+		$(elementPopup).attr('title','Groupe 9 tile n°'+feature.get('fid'));
+		$(elementPopup).attr('data-content','<b>Correlation factor: </b>'+feature.get('correlatio')+
+			'</br><b>Mean difference: </b>'+ feature.get('diff_mean'));
+		$(elementPopup).popover({'placement':'top','html':true});
+		$(elementPopup).popover('show');}
+});
+
+map3.on('pointermove',function(event){
+	if (event.dragging){
+		$(elementPopup).popover('dispose');
+		return;
+	}
+	var pixel = map3.getEventPixel(event.originalEvent);
+	var hit =map3.hasFeatureAtPixel(pixel);
+	map3.getTarget().style.cursor = hit ? 'pointer':'';
+});
