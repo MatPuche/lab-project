@@ -4,7 +4,7 @@
 		<title>Intercomparison</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<!--OpenLayers styles-->
+		<!--OpenLayers-->
 		<link rel="stylesheet" href ="libraries/v6.4.3/css/ol.css">
 		<script src="libraries/v6.4.3/build/ol.js"></script>
 		<!--Layers switcher library-->
@@ -71,17 +71,28 @@
 							<br>
 							<table>
 								<tbody>
-									<tr>
-										<td>
+									<tr id="single_raw">
+										<td rowspan="2">
 											<div id="map_diff_interc" class="map_diff">
 												<div id="popup"></div>
 											</div>
 											<div id="map_title_diff">Difference: "GHS pop" - "Worldpop"</div>
 										</td>
-										<td id="td_legend_diff">
+										<td rowspan="2" id="td_legend_diff">
 											<div class="legend"><img id="legend_diff"/></div>
 											<div id="map_legend">People/km²</div>
 										</td>
+										<td id="td_legend_diff2">
+											<div class="legend"><img src="images/Legend_tiles.jpg" alt="Legend for tiles layer"/></div>
+											<div id="map_legend">Tiles correlation</div>
+										</td>
+										
+									</tr>
+									<tr id="single_raw">
+										<td id="td_legend_diff2">
+											<div class="legend" id="legend_rec"><img id="legend_diff_rec"/></div>
+											<div id="map_legend">Reclassified</div>
+										</td>										
 									</tr>
 								</tbody>
 							</table>
@@ -197,11 +208,15 @@
 						
 					<p class="title_section">Statistics per tile: Mean, Min and Max</p>
 					<p class="comments">As said before, we computed the mean value per tile of the "difference" raster in order to evaluate if even in smaller areas the two maps counted a similar number of people. We decided to represent the results in a graph.</p>
-					<span><img src="images/Mean_per_tile_jpeg.jpg" alt="Mean difference per tile"/></span>
+
+					<div id=image_stat><img src="images/Mean_per_tile.jpg" alt="Mean difference per tile"/></div>
+
 					<p class="comments">This graph brings out some tiles for which the difference is further away from 0 than others. Indeed, while 21 tiles have a mean difference close to 0, we can identify 6 tiles with a higher mean (in absolute value): the tiles 128, 153, 154, 177, 178 and 180.</p>
 					<p class="comments">If we look at the corresponding areas we discover that all these tiles cover a water area with very small lands. Therefore, these tiles are mostly composed by null cells and the mean is computed with only a few pixels. As the pixels value are in average different of 43 person/km² and only offset each other on the whole, <strong>the smaller the number of pixels used for the computation, the more the mean is likely to differ from 0</strong>. Thus, we can consider that these tiles are not meaningful for our mean per tile analysis and conclude that <strong>in each tile the two maps counted a similar number of people</strong>. </p>
 					<p class="comments">Then, we computed the minimum and maximum value per tile and represented it on the following graph.</p>
-					<span><img src="images/Min_and_max_per_tile.PNG" alt="Min and max value per tile" /></span>
+
+					<div id=image_stat><img src="images/Min_and_max_per_tile.jpg" alt="Min and max value per tile" /></div>
+					
 					<p class="comments">This second graph brings to light that in tiles where minimum (in absolute value) is high, the maximum in the same tile is also high with a similar value of difference. This means that <strong>people have just been counted on a different pixel, but a quite close one since it is in the same tile. </strong>
 					<br>
 

@@ -104,9 +104,9 @@ var diff_intercomp = new ol.layer.Image({
 
 //Legend difference layer
 var addLegend_diff = function () {
-  var graphicUrl2 = 'http://localhost:8082/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&LAYER=Lab_project_pop:intercomp_diff&LEGEND_OPTIONS=fontSize:11.5;dx:10;mx:0.1;my:0.1;bgColor:0x91b9d1';
-  var img2 = document.getElementById('legend_diff');
-  img2.src = graphicUrl2;
+  var graphicUrl = 'http://localhost:8082/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&LAYER=Lab_project_pop:intercomp_diff&LEGEND_OPTIONS=fontSize:11.5;dx:10;mx:0.1;my:0.1;bgColor:0x91b9d1';
+  var img = document.getElementById('legend_diff');
+  img.src = graphicUrl;
 };
 
 addLegend_diff();
@@ -121,6 +121,15 @@ var diff_intercomp_rec = new ol.layer.Image({
 	})
 
 });
+
+//Legend difference reclassified layer
+var addLegend_diff_rec = function () {
+  var graphicUrl = 'http://localhost:8082/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&LAYER=Lab_project_pop:intercomp_diff_rec&LEGEND_OPTIONS=fontSize:11.5;dx:10;mx:0.1;my:0.1;bgColor:0x91b9d1';
+  var img = document.getElementById('legend_diff_rec');
+  img.src = graphicUrl;
+};
+
+addLegend_diff_rec();
 
 
 
@@ -173,6 +182,7 @@ group9_tiles.setStyle(function(feature) {
   });
 });
 
+  
 
 //Countries border layer
 var countries_borders1 = new ol.layer.Image({
@@ -309,19 +319,28 @@ var popup = new ol.Overlay({
 
 map3.addOverlay(popup);
 
+
 map3.on('click',function(event){
 	var feature = map3.forEachFeatureAtPixel(
 		event.pixel,function(feature,layer){return feature;}
 		);
+
 	if(feature !=null){
 		var pixel = event.pixel;
 		var coord = map3.getCoordinateFromPixel(pixel);
 		popup.setPosition(coord);
-		$(elementPopup).attr('title','Groupe 9 tile n°'+feature.get('fid'));
-		$(elementPopup).attr('data-content','<b>Correlation factor: </b>'+feature.get('correlatio')+
-			'</br><b>Mean difference: </b>'+ feature.get('diff_mean'));
+		$(elementPopup).attr('title','Tile n°'+feature.get('fid'));
+		$(elementPopup).attr('data-content','<b id="in_popup">Correlation factor: </b>'+feature.get('correlatio').toFixed(3)+
+			'</br><b id="in_popup">Mean difference: </b>'+ feature.get('diff_mean').toFixed(3)+
+			'</br><b id="in_popup">Minimum difference: </b>'+ feature.get('diff_min').toFixed()+
+			'</br><b id="in_popup">Maximum difference: </b>'+ feature.get('diff_max').toFixed()+
+			'</br><b id="in_popup">Non null cells: </b>'+ feature.get('diff_count').toFixed());
 		$(elementPopup).popover({'placement':'top','html':true});
 		$(elementPopup).popover('show');}
+	else{
+		$(elementPopup).popover('dispose');
+		return;
+	}
 });
 
 map3.on('pointermove',function(event){

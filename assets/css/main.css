@@ -3927,7 +3927,14 @@ input, select, textarea {
 #td_legend_diff{
 	margin: 0;
 	width: 10%;
-	padding: 0em 0.5em ;
+	padding: 0em 0.5em 0em 0em;
+}
+
+#td_legend_diff2{
+	margin: 0;
+	width: 10%;
+	padding: 2.1em 1em 0em 0em;
+	vertical-align: top;
 }
 
 #td_legend_pop{
@@ -3940,13 +3947,23 @@ input, select, textarea {
 
 .legend {
 	margin-top: 10px;
+	text-align: center !important;
+}
+
+#single_raw {
+	background: rgba(255, 255, 255, 0.05);
+	border:0 !important;
+}
+
+#legend_rec{
+	margin-top: -400px;
 }
 
 #map_legend{
 	font-size:75%;
 	font-style: italic;
 	text-align: center;
-	margin-left: -20px;
+	margin-left: 0px;
 	margin-top: 0px;
 }
 
@@ -3980,6 +3997,18 @@ input, select, textarea {
 #popover{
 	width: 200px;
 	height: auto;
+}
+
+.popover-header{
+	color:#312450;
+}
+
+.popover-body{
+	color:#3c2f59;
+}
+
+#in_popup{
+	color:#3c2f59;
 }
 
 .ol-mouse-position{
@@ -4127,3 +4156,9 @@ input, select, textarea {
 		right: 0;
 		width: 100%;
 		}
+
+#image_stat {
+	text-align: center;
+	margin: 0.5em 0 0.5em 0;
+}
+
