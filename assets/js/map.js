@@ -56,6 +56,35 @@ var bingAerialWithLabels3 = new ol.layer.Tile({
 });
 
 
+//Stamen Terrain
+var stamenTerrain1 = new ol.layer.Tile({
+	title:'Stamen Terain',
+	type:'base',
+	visible: false,
+	source: new ol.source.Stamen({
+		layer: 'terrain'
+	})
+});
+
+var stamenTerrain2 = new ol.layer.Tile({
+	title:'Stamen Terain',
+	type:'base',
+	visible: false,
+	source: new ol.source.Stamen({
+		layer: 'terrain'
+	})
+});
+
+var stamenTerrain3 = new ol.layer.Tile({
+	title:'Stamen Terain',
+	type:'base',
+	visible: false,
+	source: new ol.source.Stamen({
+		layer: 'terrain'
+	})
+});
+
+
 /*Overlay Layers*/
 
 
@@ -219,7 +248,7 @@ var map1 = new ol.Map({
 	layers: [
 		new ol.layer.Group({
 				title: 'Base Maps',
-				layers: [osm1,bingAerialWithLabels1]
+				layers: [osm1,bingAerialWithLabels1,stamenTerrain1]
 			}),
 			new ol.layer.Group({
 				title: 'Overlay Layers',
@@ -248,7 +277,7 @@ var map2 = new ol.Map({
 	layers: [
 		new ol.layer.Group({
 				title: 'Base Maps',
-				layers: [osm2,bingAerialWithLabels2]
+				layers: [osm2,bingAerialWithLabels2,stamenTerrain2]
 			}),
 			new ol.layer.Group({
 				title: 'Overlay Layers',
@@ -277,7 +306,7 @@ var map3 = new ol.Map({
 	layers: [
 		new ol.layer.Group({
 				title: 'Base Maps',
-				layers: [osm3,bingAerialWithLabels3]
+				layers: [osm3,bingAerialWithLabels3,stamenTerrain3]
 			}),
 			new ol.layer.Group({
 				title: 'Overlay Layers',
