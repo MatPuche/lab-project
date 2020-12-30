@@ -1,3 +1,5 @@
+//map.js for Intercomparison page
+
 /*Basemaps*/
 
 //OSM
@@ -118,6 +120,7 @@ var addLegend_pop = function () {
 };
 
 addLegend_pop();
+
 
 
 //Difference layer
@@ -381,3 +384,4 @@ map3.on('pointermove',function(event){
 	var hit =map3.hasFeatureAtPixel(pixel);
 	map3.getTarget().style.cursor = hit ? 'pointer':'';
 });
+

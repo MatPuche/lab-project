@@ -40,12 +40,23 @@
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
-							<h1>Lab project:</h1>
-							<h1>COUNT EVERY PERSON IN THE WORLD</h1>
-							<p>This Lab Project has been made by Nakasone Eric Yuzo and Mathilde Puche.</p>
-							<p id="introduction"> We focused on the group9 tiles. This text will be the introdutcion of our work ... blablablablablablablablablablablablablablablablablablablablablabla blablablablablablablablablabla
-								blablablablablablablablablablablablablablablablablablablablablablablablablabla blablablablablablablablablablablablablablablablablablablablablabla
-							  blablablablablablablablablablablablablablablabla blablablablablablablablablablablablablablablabla blablablablablablablablablablablablablablablabla</p>
+							<h1 class="minor">Lab project:</h1>
+							<h1 class="intermediate">COUNT EVERY PERSON IN THE WORLD</h1>
+							<br>
+
+							<p id="introduction">The aim of this project is to assess the accuracy and reliability of two datasets depicting the world population and its spatial distribution in 2015. We particularly focused on the tiles of group 9, which correspond to the East part of the world (China, Japan, North and South Corea and some parts of Mongolia and Russia).</p>
+							<br>
+
+							<h3>GHS-POP</h3>
+
+							<p id="introduction">The first dataset to be analysed is <em><strong>Global Human Settlement - Population Grid, year 2015 (GHS-POP)</strong></em>, a spatial raster produced by the Joint Research Centre (i.e. the European Commission's science and knowledge service), downloadable on <em><a href="https://ghsl.jrc.ec.europa.eu/data.php">https://ghsl.jrc.ec.europa.eu/data.php</a></em>. It represents the distribution of population in 2015, expressed as the number of people per cell. </p>
+							<p id="introduction">To produce these data, they extracted from satellite imagery the build-up areas and mixed it with the census data, which resulted in a layer of 1km of resolution providing the number of unhabitants per cell.</p>
+
+							<br>
+							<h3>WorldPop</h3>
+							<p id="introduction">The second dataset to be analysed is <em><strong>WorldPop - Population Counts, Unconstrained  global  mosaics  2000/2020, year 2015</strong></em>, a spatial raster resulting from the WorldPop project led at the University of Southampton, downladable on <a href="www.worldpop.org">www.worldpop.org</a>. It estimates the human population distribution in 2015, expressed here again as the number of people per cell. </p>
+							<p id="introduction">To produce these data, they used the population and house censuses and desaggregated them to grid cell-based counts. Unlike GHS-POP, they decided not to use the building and residential settlement datasets as a mask because they consider that no settlement dataset is accurate enough to identify all the build-up areas. This is the major difference between the two methods, which results in differences in the distribution of population on the two maps as we will see in the intercomparison section. </p>
+							<br>
 
 						</div>
 					</section>
@@ -53,11 +64,12 @@
 				<!-- One -->
 					<section id="one" class="wrapper style2 spotlights">
 						<section>
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
+							<!-- <a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a> -->
+							<div id="map_interc_intro" class="map_intro"></div>
 							<div class="content">
 								<div class="inner">
 									<h2>Intercomparison</h2>
-									<p>In this section, we proceed to a comparison of the 2 maps to assess how much they match.</p>
+									<p id="section_intro">In this section, we proceed to a comparison of the 2 datasets to assess how much they match each other. It brings out a first idea of their accuracy and enables to understand their differences.</p>
 									<ul class="actions">
 										<li><a href="intercomparison.html" class="button">Learn more</a></li>
 									</ul>
@@ -69,7 +81,7 @@
 							<div class="content">
 								<div class="inner">
 									<h2>Validation</h2>
-									<p>In this section we compare each of our maps with a reference data set.</p>
+									<p id="section_intro">In this section, we compare each of our two maps with a reference dataset, a photo-interpretation of satellite imagery, in order to determine their accuracy independently of one another. </p>
 									<ul class="actions">
 										<li><a href="validation.html" class="button">Learn more</a></li>
 									</ul>
@@ -97,7 +109,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/map.js"></script>
+			<script src="assets/js/index_map.js"></script>
 			
 
 

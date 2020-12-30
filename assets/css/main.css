@@ -213,6 +213,14 @@ input, select, textarea {
 				right: 0;
 				width: 100%;
 			}
+		h1.intermediate {
+			font-size: 2em;
+			font-style: italic;
+		}
+		h1.minor {
+			font-size: 1.8em;
+			font-weight: normal;
+		}
 
 	h2 {
 		font-size: 1.75em;
@@ -220,6 +228,7 @@ input, select, textarea {
 
 	h3 {
 		font-size: 1.1em;
+		margin: 0.4em 0 0.5em 0;
 	}
 
 	h4 {
@@ -3933,7 +3942,7 @@ input, select, textarea {
 #td_legend_diff2{
 	margin: 0;
 	width: 10%;
-	padding: 2.1em 1em 0em 0em;
+	padding: 2.2em 1em 0em 0em;
 	vertical-align: top;
 }
 
@@ -3956,7 +3965,7 @@ input, select, textarea {
 }
 
 #legend_rec{
-	margin-top: -400px;
+	margin-top: -380px;
 }
 
 #map_legend{
@@ -4160,5 +4169,21 @@ input, select, textarea {
 #image_stat {
 	text-align: center;
 	margin: 0.5em 0 0.5em 0;
+	width: 100%;
 }
 
+p#introduction{
+	text-indent: 25px;
+	text-align: justify;
+	font-size: 1.1em;
+	margin-bottom: 0;
+}
+
+p#section_intro{
+	text-align: justify;
+}
+
+#map_interc_intro{
+	width: 25em;
+	height: 22.5em;
+}
