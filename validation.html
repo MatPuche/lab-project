@@ -39,9 +39,26 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1 class="major">Validation</h1>
-							<div id="map_validation" class="map"></div>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+							<p class="comments">In this section, we <strong>compared the two maps in terms of their accuracy.</strong> To do so, the maps were <strong>reclassified to obtain thematic maps of built/not built areas</strong> (<strong>1</strong> denotes <strong>not built</strong> and <strong>2</strong> denotes <strong>built</strong>).</p>
+							<p class="comments">Then, it was created a map of differences to visualize where the maps have the same classification and where they are different. The areas are classified as: <strong>0 (GHS not populated and WorldPop populated), 1 (GHS and WolrdPop either both populated or unpopulated) and 2 (GHS populated and WorldPop not populated)</strong> </p>
+							<p class="comments">Using the map of differences, <strong>sampling points</strong> were selected and using <strong>photo-interpretation of satellite images</strong>, we classified the points manually to do the comparison.</p>
+							<p class="comments">On the map below, there are the reclassified maps, the map of differences and the sampling points.</p>
+							<table>
+								<tbody>
+									<tr>
+										<td id="map_table">
+											<div id="map_validation" class="map_rec"></div>
+											<div id="map_title">Reclassified maps</div>
+										</td>
+										<td id="td_legend_rec">
+											<div class="legend"><img id="legend_rec"/></div>
+											<div id="map_legend">Classes for reclassifiend maps</div>
+											<div class="legend"><img id="legend_diff"/></div>
+											<div id="map_legend">Classes for map of differences</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</section>
 
