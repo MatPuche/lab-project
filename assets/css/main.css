@@ -4022,6 +4022,8 @@ input, select, textarea {
 
 .popover-header{
 	color:#312450;
+	margin-bottom: 0.3em;
+	text-align: center;
 }
 
 .popover-body{
@@ -4195,7 +4197,7 @@ p#section_intro{
 	text-align: justify;
 }
 
-#map_interc_intro{
+.map_intro{
 	width: 25em;
 	height: 22.5em;
 }

@@ -193,15 +193,15 @@ group9_tiles.setStyle(function(feature) {
   let fillColor;
   const correlation = feature.get('correlatio');
   if (correlation < 0.15) {
-    fillColor = 'rgba(215, 25, 28, 0.5)';
+    fillColor = 'rgba(215, 25, 28, 0.6)';
   } else if (correlation < 0.35) {
-    fillColor = 'rgba(253, 174, 97, 0.5)';
+    fillColor = 'rgba(253, 174, 97, 0.6)';
   } else if (correlation < 0.55) {
-    fillColor = 'rgba(255, 255, 140, 0.5)';
+    fillColor = 'rgba(255, 255, 140, 0.6)';
   } else if (correlation < 0.76) {
-    fillColor = 'rgba(171, 221, 164, 0.5)';
+    fillColor = 'rgba(171, 221, 164, 0.6)';
   } else {
-    fillColor = 'rgba(43, 131, 186, 0.5)';
+    fillColor = 'rgba(43, 131, 186, 0.6)';
   }
   return new ol.style.Style({
     fill: new ol.style.Fill({
@@ -361,8 +361,9 @@ map3.on('click',function(event){
 		var pixel = event.pixel;
 		var coord = map3.getCoordinateFromPixel(pixel);
 		popup.setPosition(coord);
-		$(elementPopup).attr('title','Tile n°'+feature.get('fid'));
-		$(elementPopup).attr('data-content','<b id="in_popup">Correlation factor: </b>'+feature.get('correlatio').toFixed(3)+
+		// $(elementPopup).attr('title','Tile n°'+feature.get('fid'));
+		$(elementPopup).attr('data-content','<b><h3 class="popover-header">Tile n°'+feature.get('fid')+'</h3></b>'+
+			'<b id="in_popup">Correlation factor: </b>'+feature.get('correlatio').toFixed(3)+
 			'</br><b id="in_popup">Mean difference: </b>'+ feature.get('diff_mean').toFixed(3)+
 			'</br><b id="in_popup">Minimum difference: </b>'+ feature.get('diff_min').toFixed()+
 			'</br><b id="in_popup">Maximum difference: </b>'+ feature.get('diff_max').toFixed()+
