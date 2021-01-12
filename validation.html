@@ -41,9 +41,18 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1 class="major">Validation</h1>
-							<p class="comments">In this section, we <strong>compared the two maps in terms of their accuracy.</strong> To do so, the maps were <strong>reclassified to obtain thematic maps of built/not built areas</strong> (<strong>1</strong> denotes <strong>not built</strong> and <strong>2</strong> denotes <strong>built</strong>).</p>
-							<p class="comments">Then, it was created a map of differences to visualize where the maps have the same classification and where they are different. The areas are classified as: <strong>0 (GHS not populated and WorldPop populated), 1 (GHS and WolrdPop either both populated or unpopulated) and 2 (GHS populated and WorldPop not populated)</strong> </p>
-							<p class="comments">Using the map of differences, <strong>sampling points</strong> were selected and using <strong>photo-interpretation of satellite images</strong>, we classified the points manually to do the comparison.</p>
+							<p class="p_list">In this section, we <strong>compared the two datasets in terms of their accuracy.</strong> To do so, the maps were <strong>reclassified</strong> to obtain thematic maps of <strong>built/not built areas.</strong> We represented these areas with the following numbers:</p>
+								<ul class="classified">
+									<li><strong>1</strong>: not built</li>
+									<li><strong>2</strong>: built</li>
+								</ul>
+							<p class="p_list">Then, we created a <strong>map of differences</strong> to visualize where the maps have the same classification and where they are different. The areas are classified as:</p>
+								<ul class="classified">
+									<li><strong>0</strong>: GHS not populated and WorldPop populated</li>
+									<li><strong>1</strong>: GHS and WolrdPop either both populated or unpopulated</li>
+									<li><strong>2</strong>: GHS populated and WorldPop not populated</li>
+								</ul>
+							<p class="comments">Using the map of differences, <strong>sampling points</strong> were selected keeping a balanced ratio of the 3 classes above. Doing a <strong>photo-interpretation of satellite images</strong>, we were able to classify the points manually into built and not built. With this classification, we can analyze the accuracy of each dataset.</p>
 							<p class="comments">On the map below, there are the reclassified maps, the map of differences and the sampling points.</p>
 							<table>
 								<tbody>
@@ -61,6 +70,18 @@
 									</tr>
 								</tbody>
 							</table>
+							<p class="title_section">First comments on the maps</p>
+							<p class="comments">From the maps presented above, we can comment and conclude some things.</p>
+							<p class="comments">First of all, looking at the map of differences, we can say that there are few places where the GHS map is classified as built and the WorldPop as not built. On the other hand, there are many places where the opposite occurs. From that, we can notice how the way each data is collected affects its distribution through the map. <strong>There are many more WorldPop built cells than GHS built cells.</strong></p>
+							<p class="comments">We can also see that a <strong>big part of Russian and Mongolian territories</strong> are cells where GHS and WorldPop have the <strong>same classification</strong> (class 1 of the map of differences) and most of them are places classified as not built. In contrast, <strong>most of Chinese, Korean and Japanese territories are classified as built,</strong> at least for the <strong>WorldPop dataset.</strong> Also for these countries, there is a notable similarity between the GHS built area and the area where GHS and WorldPop are classified the same.</p>
+							<p class="comments">For the <strong>sampling points,</strong> we can state that they are <strong>well distributed</strong> in the analyzed area. However, an important thing to highlight is that due to the fact that we tried to balance the number of points for the 3 classes, the ones related to the few areas where the GHS is built and the WorldPop is not built <strong>(class 2) are really aggregated.</strong> We can see that happening in Northeast China and in Mongolia.</p>
+							<p class="title_section">Error Matrices and Associated Accuracy Indexes</p>
+							<p class="p_list">With the help of <strong><em>"Accuracy_assessment_and_sampling.py"</em> script,</strong> we were able to compute the error matrix of the classification and some indexes that help us analyze the accuracy of each dataset. The indexes are:</p>
+								<ul class="classified">
+									<li><strong>User's Accuracy (UA)</strong>: shows how often a user of thematic raster can expect to find the class on the ground;</li>
+									<li><strong>Producer's Accuracy (PA)</strong>: probability that the class present on the ground is also captured by classification in the thematic raster;</li>
+									<li><strong>Overall Accuracy (OA)</strong>: proportion of correctly classified pixels in total number of pixels.</li>
+								</ul>
 						</div>
 					</section>
 

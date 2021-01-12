@@ -95,6 +95,15 @@ var samp_points = new ol.layer.Image({
 	})
 });
 
+//Countries border layer
+var countries_borders = new ol.layer.Image({
+	title:'Border of countries',
+	visible:false,
+	source: new ol.source.ImageWMS({
+		url:"http://localhost:8082/geoserver/wms",
+		params: {'LAYERS' : 'Lab_project_pop:World_borders'}
+	})
+});
 
 var map = new ol.Map({
 	target:document.getElementById('map_validation'),
@@ -105,7 +114,7 @@ var map = new ol.Map({
 			}),
 			new ol.layer.Group({
 				title: 'Overlay Layers',
-				layers: [diff_3scenarios,GHS_rec,worldpop_rec,samp_points]
+				layers: [diff_3scenarios,GHS_rec,worldpop_rec,samp_points,countries_borders]
 			})
 		],
 	view: new ol.View({
