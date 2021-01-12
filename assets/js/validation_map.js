@@ -58,13 +58,13 @@ var worldpop_rec = new ol.layer.Image({
 });
 
 //Legend for reclassified maps
-var addLegend_rec = function () {
+var addLegend_valid_rec = function () {
   var graphicUrl = 'http://localhost:8082/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&LAYER=Lab_project_pop:ghs_rec_int&LEGEND_OPTIONS=fontSize:11.5;dx:10;mx:0.1;my:0.1;bgColor:0x91b9d1';
-  var img = document.getElementById('legend_rec');
+  var img = document.getElementById('legend_valid_rec');
   img.src = graphicUrl;
 };
 
-addLegend_rec();
+addLegend_valid_rec();
 
 //Map of differences
 var diff_3scenarios = new ol.layer.Image({
@@ -79,7 +79,7 @@ var diff_3scenarios = new ol.layer.Image({
 //Legend for reclassified map of differences
 var addLegend_valid_diff = function () {
   var graphicUrl = 'http://localhost:8082/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&LAYER=Lab_project_pop:diff_3scenarios_int&LEGEND_OPTIONS=fontSize:11.5;dx:10;mx:0.1;my:0.1;bgColor:0x91b9d1';
-  var img = document.getElementById('legend_diff');
+  var img = document.getElementById('legend_valid_diff');
   img.src = graphicUrl;
 };
 
@@ -95,6 +95,7 @@ var samp_points = new ol.layer.Image({
 	})
 });
 
+
 var map = new ol.Map({
 	target:document.getElementById('map_validation'),
 	layers: [
@@ -109,7 +110,7 @@ var map = new ol.Map({
 		],
 	view: new ol.View({
 		center:ol.proj.fromLonLat([143,47]),
-		zoom:3.7,
+		zoom:3.6,
 		minZoom:3.4
 	}),
 	controls: ol.control.defaults().extend([
