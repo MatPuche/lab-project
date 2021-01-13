@@ -4201,3 +4201,27 @@ p#section_intro{
 	width: 25em;
 	height: 22.5em;
 }
+
+.table_title{
+	text-align: center;
+	font-size: 1.2em;
+	margin-bottom: 0;
+	border-color: rgb(49, 36, 80);
+	border-left: 0;
+	border-right: 0;
+}
+
+.matrix{
+	text-align: center;
+}
+
+.no_lines{
+	margin-bottom: 0;
+	border-color: rgb(49, 36, 80);
+	border-left: 0;
+	border-right: 0;
+}
+
+.column{
+	width:50%;
+}

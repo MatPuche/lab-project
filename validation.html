@@ -42,16 +42,16 @@
 						<div class="inner">
 							<h1 class="major">Validation</h1>
 							<p class="p_list">In this section, we <strong>compared the two datasets in terms of their accuracy.</strong> To do so, the maps were <strong>reclassified</strong> to obtain thematic maps of <strong>built/not built areas.</strong> We represented these areas with the following numbers:</p>
-								<ul class="classified">
-									<li><strong>1</strong>: not built</li>
-									<li><strong>2</strong>: built</li>
-								</ul>
+							<ul class="classified">
+								<li><strong>1</strong>: not built</li>
+								<li><strong>2</strong>: built</li>
+							</ul>
 							<p class="p_list">Then, we created a <strong>map of differences</strong> to visualize where the maps have the same classification and where they are different. The areas are classified as:</p>
-								<ul class="classified">
-									<li><strong>0</strong>: GHS not populated and WorldPop populated</li>
-									<li><strong>1</strong>: GHS and WolrdPop either both populated or unpopulated</li>
-									<li><strong>2</strong>: GHS populated and WorldPop not populated</li>
-								</ul>
+							<ul class="classified">
+								<li><strong>0</strong>: GHS not populated and WorldPop populated</li>
+								<li><strong>1</strong>: GHS and WolrdPop either both populated or unpopulated</li>
+								<li><strong>2</strong>: GHS populated and WorldPop not populated</li>
+							</ul>
 							<p class="comments">Using the map of differences, <strong>sampling points</strong> were selected keeping a balanced ratio of the 3 classes above. Doing a <strong>photo-interpretation of satellite images</strong>, we were able to classify the points manually into built and not built. With this classification, we can analyze the accuracy of each dataset.</p>
 							<p class="comments">On the map below, there are the reclassified maps, the map of differences and the sampling points.</p>
 							<table>
@@ -77,11 +77,102 @@
 							<p class="comments">For the <strong>sampling points,</strong> we can state that they are <strong>well distributed</strong> in the analyzed area. However, an important thing to highlight is that due to the fact that we tried to balance the number of points for the 3 classes, the ones related to the few areas where the GHS is built and the WorldPop is not built <strong>(class 2) are really aggregated.</strong> We can see that happening in Northeast China and in Mongolia.</p>
 							<p class="title_section">Error Matrices and Associated Accuracy Indexes</p>
 							<p class="p_list">With the help of <strong><em>"Accuracy_assessment_and_sampling.py"</em> script,</strong> we were able to compute the error matrix of the classification and some indexes that help us analyze the accuracy of each dataset. The indexes are:</p>
-								<ul class="classified">
-									<li><strong>User's Accuracy (UA)</strong>: shows how often a user of thematic raster can expect to find the class on the ground;</li>
-									<li><strong>Producer's Accuracy (PA)</strong>: probability that the class present on the ground is also captured by classification in the thematic raster;</li>
-									<li><strong>Overall Accuracy (OA)</strong>: proportion of correctly classified pixels in total number of pixels.</li>
-								</ul>
+							<ul class="classified">
+								<li><strong>User's Accuracy (UA)</strong>: shows how often a user of thematic raster can expect to find the class on the ground;</li>
+								<li><strong>Producer's Accuracy (PA)</strong>: probability that the class present on the ground is also captured by classification in the thematic raster;</li>
+								<li><strong>Overall Accuracy (OA)</strong>: proportion of correctly classified pixels in total number of pixels.</li>
+							</ul>
+							<p class="comments">For the <strong>GHS dataset</strong>, we have:</p>
+							<table class="table_2parts">
+								<tr class="table_title">
+									<td><strong>Error Matrix</strong></td>
+									<td><strong>Associated Accuracy Indexes</strong></td>
+								<tr class="no_lines">
+									<td class="column">
+										<table class="matrix">
+											<tr>
+												<td><strong>GHS class/Classified</strong></td>
+												<td><strong>1</strong></td>
+												<td><strong>2</strong></td>
+											</tr>
+											<tr>
+												<td><strong>1</strong></td>
+												<td>191</td>
+												<td>40</td>
+											</tr>
+											<tr>
+												<td><strong>2</strong></td>
+												<td>125</td>
+												<td>44</td>
+											</tr>
+										</table>
+									</td>
+									<td class="column">
+										<table class="matrix">
+											<tr>
+												<td><strong>UA</strong></td>
+												<td><strong>PA</strong></td>
+												<td><strong>OA</strong></td>
+											</tr>
+											<tr>
+												<td>0.83</td>
+												<td>0.6</td>
+												<td><strong>0.5875</strong></td>
+											</tr>
+											<tr>
+												<td>0,26</td>
+												<td>0.52</td>
+											</tr>
+										</table>
+									</td>
+								</tr>	
+							</table>
+							<p class="comments">For the <strong>WorldPop dataset</strong>, we have:</p>
+							<table class="table_2parts">
+								<tr class="table_title">
+									<td><strong>Error Matrix</strong></td>
+									<td><strong>Associated Accuracy Indexes</strong></td>
+								<tr class="no_lines">
+									<td class="column">
+										<table class="matrix">
+											<tr>
+												<td><strong>WorldPop class/Classified</strong></td>
+												<td><strong>1</strong></td>
+												<td><strong>2</strong></td>
+											</tr>
+											<tr>
+												<td><strong>1</strong></td>
+												<td>221</td>
+												<td>10</td>
+											</tr>
+											<tr>
+												<td><strong>2</strong></td>
+												<td>95</td>
+												<td>74</td>
+											</tr>
+										</table>
+									</td>
+									<td class="column">
+										<table class="matrix">
+											<tr>
+												<td><strong>UA</strong></td>
+												<td><strong>PA</strong></td>
+												<td><strong>OA</strong></td>
+											</tr>
+											<tr>
+												<td>0.96</td>
+												<td>0.7</td>
+												<td><strong>0.7375</strong></td>
+											</tr>
+											<tr>
+												<td>0,44</td>
+												<td>0.88</td>
+											</tr>
+										</table>
+									</td>
+								</tr>	
+							</table>
+							<p class="comments">From the results showed on the tables above, we can see that the overall accuracy is around 59% for GHS and 74% for WorldPop. Based on these numbers, it's possible to conclude that the WorldPop dataset is more accurate to classify areas into urban and not urban areas. 
 						</div>
 					</section>
 
