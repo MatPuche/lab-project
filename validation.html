@@ -94,16 +94,16 @@
 										<table class="matrix">
 											<tr>
 												<td><strong>GHS class/Classified</strong></td>
-												<td><strong>1</strong></td>
-												<td><strong>2</strong></td>
+												<td><strong>Not Urban</strong></td>
+												<td><strong>Urban</strong></td>
 											</tr>
 											<tr>
-												<td><strong>1</strong></td>
+												<td><strong>Not Urban</strong></td>
 												<td>191</td>
 												<td>40</td>
 											</tr>
 											<tr>
-												<td><strong>2</strong></td>
+												<td><strong>Urban</strong></td>
 												<td>125</td>
 												<td>44</td>
 											</tr>
@@ -122,7 +122,7 @@
 												<td><strong>0.5875</strong></td>
 											</tr>
 											<tr>
-												<td>0,26</td>
+												<td>0.26</td>
 												<td>0.52</td>
 											</tr>
 										</table>
@@ -139,16 +139,16 @@
 										<table class="matrix">
 											<tr>
 												<td><strong>WorldPop class/Classified</strong></td>
-												<td><strong>1</strong></td>
-												<td><strong>2</strong></td>
+												<td><strong>Not Urban</strong></td>
+												<td><strong>Urban</strong></td>
 											</tr>
 											<tr>
-												<td><strong>1</strong></td>
+												<td><strong>Not Urban</strong></td>
 												<td>221</td>
 												<td>10</td>
 											</tr>
 											<tr>
-												<td><strong>2</strong></td>
+												<td><strong>Urban</strong></td>
 												<td>95</td>
 												<td>74</td>
 											</tr>
@@ -167,14 +167,20 @@
 												<td><strong>0.7375</strong></td>
 											</tr>
 											<tr>
-												<td>0,44</td>
+												<td>0.44</td>
 												<td>0.88</td>
 											</tr>
 										</table>
 									</td>
 								</tr>	
 							</table>
-							<p class="comments">From the results showed on the tables above, we can see that the overall accuracy is around 59% for GHS and 74% for WorldPop. Based on these numbers, it's possible to conclude that the WorldPop dataset is more accurate to classify areas into urban and not urban areas. 
+							<p class="comments">Looking at the error matrices, specially to their off-diagonal, we can see that most of incorrectly classified points are the ones that are "Urban" on the thematic raster but were classified as "Not Urban" by us.</p>
+							<p class="comments">Analyzing the indexes, we can notice that for both datasets the User's Accuracy (UA) for not urban areas were very high, including a 96% for the WorldPop. It means that most of the not urban points on the thematic rasters were also classified as not urban. In contrast, the UA for urban areas has very low numbers.</p>
+							<p class="comments">Looking at the Overall Accuracy, we can see that it's around 59% for GHS and 74% for WorldPop. Based on these numbers, it's possible to conclude that the WorldPop dataset is more accurate to classify areas into urban and not urban areas than the GHS.</p>
+							<br>
+
+							<p class="title_section">Conclusion of Validation</p>
+							<p class="comments"></p>
 						</div>
 					</section>
 
