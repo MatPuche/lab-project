@@ -245,6 +245,13 @@ var countries_borders3 = new ol.layer.Image({
 });
 
 
+//Common view 
+var common_view = new ol.View({
+		center:ol.proj.fromLonLat([144,47]),
+		zoom:3.3,
+		minZoom:3
+});
+
 //GHS intercomp map
 var map1 = new ol.Map({
 	target:document.getElementById('map_GHS_interc'),
@@ -258,11 +265,7 @@ var map1 = new ol.Map({
 				layers: [GHS_intercomp_final,countries_borders1]
 			})
 		],
-	view: new ol.View({
-		center:ol.proj.fromLonLat([144,47]),
-		zoom:3.3,
-		minZoom:3
-	}),
+	view: common_view,
 	controls: ol.control.defaults().extend([
 		new ol.control.ScaleLine(),
 		new ol.control.FullScreen(),
@@ -287,11 +290,7 @@ var map2 = new ol.Map({
 				layers: [worldpop_intercomp_final,countries_borders2]
 			})
 		],
-	view: new ol.View({
-		center:ol.proj.fromLonLat([144,47]),
-		zoom:3.3,
-		minZoom:3
-	}),
+	view: common_view,
 	controls: ol.control.defaults().extend([
 		new ol.control.ScaleLine(),
 		new ol.control.FullScreen(),
