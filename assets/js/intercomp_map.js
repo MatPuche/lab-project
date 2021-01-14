@@ -360,7 +360,6 @@ map3.on('click',function(event){
 		var pixel = event.pixel;
 		var coord = map3.getCoordinateFromPixel(pixel);
 		popup.setPosition(coord);
-		// $(elementPopup).attr('title','Tile n°'+feature.get('fid'));
 		$(elementPopup).attr('data-content','<b><h3 class="popover-header">Tile n°'+feature.get('fid')+'</h3></b>'+
 			'<b id="in_popup">Correlation factor: </b>'+feature.get('correlatio').toFixed(3)+
 			'</br><b id="in_popup">Mean difference: </b>'+ feature.get('diff_mean').toFixed(3)+

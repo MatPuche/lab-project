@@ -4003,8 +4003,10 @@ input, select, textarea {
 }
 
 .map_rec{
-	width: 100%;
+	width: 92%;
 	height: 600px;
+	margin-left: 40px;
+	margin-top: 30px;
 }
 
 #td_legend_rec{
