@@ -74,11 +74,29 @@
 									</tr>
 								</tbody>
 							</table>
+							<p class="title_section">Data reports from the maps</p>					
+							<p class="comments">Using the QGIS raster tool "raster layer unique values report" again, we have computed the number of cell per class for both reclassified maps and for the map of differences.</p>
+							<p class="p_list">For the <strong>GHS reclassified</strong>, we have:</p>
+								<ul class="classified">
+									<li>Not Built (1): 17 859 195 px (85%)</li>
+									<li>Built (2): 3 227 598 px (15%)</li>									
+								</ul>
+							<p class="p_list">For the <strong>WorldPop reclassified</strong>, we have:</p>
+								<ul class="classified">
+									<li>Not Built (1): 12 425 010 px (59%)</li>
+									<li>Built (2): 8 661 783 px (41%)</li>									
+								</ul>
+							<p class="p_list">For the <strong>map of differences</strong>, we have:</p>
+								<ul class="classified">
+									<li>GHS not populated and WorldPop populated (0): 5 497 550 px (26.1%)</li>
+									<li>GHS and WolrdPop either both populated or unpopulated (1): 15 525 878 px (73.6%)</li>
+									<li>GHS populated and WorldPop not populated (2): 63 365 px (0.3%)</li>								
+								</ul>
 							<p class="title_section">First comments on the maps</p>
-							<p class="comments">From the maps presented above, we can comment and conclude some things.</p>
-							<p class="comments">First of all, looking at the map of differences, we can say that there are few places where the GHS map is classified as built and the WorldPop as not built. On the other hand, there are many places where the opposite occurs. From that, we can notice again that the method used to build each dataset affects the distribution of population through the map. <strong>There are much more WorldPop built cells than GHS built cells.</strong></p>
+							<p class="comments">From the maps and reports presented above, we can comment and conclude some things.</p>
+							<p class="comments">First of all, looking at the map of differences, we can say that there are few places where the GHS map is classified as built and the WorldPop as not built. On the other hand, there are many places where the opposite occurs. From that, we can notice again that the method used to build each dataset affects the distribution of population through the map. <strong>There are much more WorldPop built cells (41%) than GHS built cells (15%).</strong></p>
 							<p class="comments">We can also see that a <strong>big part of Russian and Mongolian territories</strong> are cells where GHS and WorldPop have the <strong>same classification</strong> (class 1 of the map of differences) and most of them are places classified as not built. In contrast, <strong>most of Chinese, Korean and Japanese territories are classified as built</strong> for the <strong>WorldPop dataset.</strong> Also for these countries, there is a notable similarity between the GHS built area and the area where GHS and WorldPop are classified the same (class 2).</p>
-							<p class="comments">For the <strong>sampling points,</strong> we can state that they are <strong>well distributed</strong> in the analyzed area. However, an important thing to highlight is that due to the fact that we tried to balance the number of points for the 3 classes, the ones related to the few areas where the GHS is built and the WorldPop is not built <strong>(class 2) are really aggregated.</strong> We can see that happening in Northeast China and in Mongolia. Also, by checking the classifications for these specific points, most of them show that these areas were classified by us as "Not Urban".</p>
+							<p class="comments">For the <strong>sampling points,</strong> we can state that they are <strong>well distributed</strong> in the analyzed area. However, an important thing to highlight is that due to the fact that we tried to balance the number of points for the 3 classes, the ones related to the few areas (0.3%) where the GHS is built and the WorldPop is not built <strong>(class 2) are really aggregated.</strong> We can see that happening in Northeast China and in Mongolia. Also, by checking the classifications for these specific points, most of them show that these areas were classified by us as "Not Urban".</p>
 							<br>
 
 							<p class="title_section">Error Matrices and Associated Accuracy Indexes</p>
