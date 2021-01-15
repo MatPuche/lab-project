@@ -74,6 +74,7 @@
 									</tr>
 								</tbody>
 							</table>
+
 							<p class="title_section">Data reports from the maps</p>					
 							<p class="comments">Using the QGIS raster tool "raster layer unique values report" again, we have computed the number of cell per class for both reclassified maps and for the map of differences.</p>
 							<p class="p_list">For the <strong>GHS reclassified</strong>, we have:</p>
@@ -92,20 +93,29 @@
 									<li>GHS and WolrdPop either both populated or unpopulated (1): 15 525 878 px (73.6%)</li>
 									<li>GHS populated and WorldPop not populated (2): 63 365 px (0.3%)</li>								
 								</ul>
+
+
 							<p class="title_section">First comments on the maps</p>
-							<p class="comments">From the maps and reports presented above, we can comment and conclude some things.</p>
-							<p class="comments">First of all, looking at the map of differences, we can say that there are few places where the GHS map is classified as built and the WorldPop as not built. On the other hand, there are many places where the opposite occurs. From that, we can notice again that the method used to build each dataset affects the distribution of population through the map. <strong>There are much more WorldPop built cells (41%) than GHS built cells (15%).</strong></p>
-							<p class="comments">We can also see that a <strong>big part of Russian and Mongolian territories</strong> are cells where GHS and WorldPop have the <strong>same classification</strong> (class 1 of the map of differences) and most of them are places classified as not built. In contrast, <strong>most of Chinese, Korean and Japanese territories are classified as built</strong> for the <strong>WorldPop dataset.</strong> Also for these countries, there is a notable similarity between the GHS built area and the area where GHS and WorldPop are classified the same (class 2).</p>
-							<p class="comments">For the <strong>sampling points,</strong> we can state that they are <strong>well distributed</strong> in the analyzed area. However, an important thing to highlight is that due to the fact that we tried to balance the number of points for the 3 classes, the ones related to the few areas (0.3%) where the GHS is built and the WorldPop is not built <strong>(class 2) are really aggregated.</strong> We can see that happening in Northeast China and in Mongolia. Also, by checking the classifications for these specific points, most of them show that these areas were classified by us as "Not Urban".</p>
+
+							<p class="comments">From the maps and the data presented above, we can comment and conclude some things.</p>
+
+							<p class="comments">First of all, looking at the map of differences and the associated data computed above, we see that there are few places where the GHS map is classified as built and the WorldPop as not built (only 0.3% of cells!). In contrast, there are much more places where the opposite occurs (26.1% of cells). Thus, here again we notice that the method used to build each dataset affects the distribution of population through the map: <strong>there are much more WorldPop built cells (41%) than GHS built cells (15%).</strong></p>
+
+							<p class="comments">However, <strong>the large majority of the cells have the same classification on the 2 maps (73.6%)</strong>. We can identify that <strong>a big part of Russian and Mongolian territories</strong> are cells where GHS and WorldPop have the same classification (class 1 of the map of differences) and <strong>most of them are places classified as not built</strong>. Also, <strong>most of Chinese, Korean and Japanese territories are classified as built for the WorldPop dataset</strong> so, in these regions, the cells with same classification correspond to the "built" cells of GHS-Pop. This can easily be observed by comparing the map of differences and the GHS-Pop map, which are very similar in these regions.</p>
+
+							<p class="comments">For the <strong>sampling points,</strong> we can state that they are <strong>well distributed</strong> in the analyzed area. However, due to the fact that we tried to balance the number of points for the 3 classes, the ones related to the few areas (0.3%) where the GHS is built and the WorldPop is not built <strong>(class 2) are really aggregated.</strong> We can see that happening in Northeast China and in Mongolia. In addition, by checking the classifications for these specific points, most of them show that these areas were classified by us as "Not Urban".</p>
 							<br>
 
+
 							<p class="title_section">Error Matrices and Associated Accuracy Indexes</p>
-							<p class="p_list">With the help of the <strong><em>"Accuracy_assessment_and_sampling.py"</em> script,</strong> we were able to compute the error matrix of the classification and some indexes that help us analyze the accuracy of each dataset. The indexes are:</p>
+
+							<p class="p_list">With the help of the <strong><em>"Accuracy_assessment_and_sampling.py"</em> script,</strong> we were able to compute the error matrix of the classifications and some indexes that help us analyze the accuracy of each dataset. The indexes are:</p>
 							<ul class="classified">
 								<li><strong>User's Accuracy (UA)</strong>: shows how often a user of thematic raster can expect to find the class on the ground;</li>
 								<li><strong>Producer's Accuracy (PA)</strong>: probability that the class present on the ground is also captured by classification in the thematic raster;</li>
 								<li><strong>Overall Accuracy (OA)</strong>: proportion of correctly classified pixels in total number of pixels.</li>
 							</ul>
+
 							<p class="comments">For the <strong>GHS dataset</strong>, we have:</p>
 							<table class="table_2parts">
 								<tr class="table_title">
@@ -197,15 +207,14 @@
 								</tr>	
 							</table>
 							<p class="comments">Looking at the error matrices, specially to their off-diagonal, we can see that <strong>most of incorrectly classified points are the ones that are "Urban" on the thematic raster</strong> but were classified as "Not Urban" by us. It's important to highlight that during the classification, some points were not very easy to classify considering that some images may not make it clear if they have or not a building.</p>						
-							<p class="comments">Analyzing the indexes, we can notice that for both datasets the <strong>User's Accuracy (UA) for "Not Urban" areas were very high</strong>, including a 96% for the WorldPop. It means that most of the not urban points on the thematic rasters were also classified as not urban. In contrast, <strong>the UA for "Urban" areas has very low numbers</strong>.</p>
-							<p class="comments">Looking at the Overall Accuracy, we can see that it's around 59% for GHS and 74% for WorldPop. Based on these numbers, it's possible to conclude that <strong>the WorldPop dataset is more accurate to classify areas into "Urban" and "Not Urban" areas than the GHS one</strong>.</p>
+							<p class="comments">Analyzing the indexes, we can notice that for both datasets the <strong>User's Accuracy (UA) for "Not Urban" areas were very high</strong>, including a 96% for the WorldPop. It means that most of the not urban points on the thematic rasters were also classified as not urban. In contrast, <strong>the UA for "Urban" areas has very low numbers</strong>. Regarding the Producer's Accuracy, the two WorldPop indexes are higher thant the GHS ones.</p>
+							<p class="comments">Finally, looking at the Overall Accuracy, we can see that it's around 59% for GHS and 74% for WorldPop. Based on these numbers, it's possible to conclude that <strong>the WorldPop dataset is more accurate to classify areas into "Urban" and "Not Urban" areas than the GHS one</strong>.</p>
 							<br>
 
 							<p class="title_section">Conclusion of Validation</p>
-							<p class="comments">As already said on the Intercomparion section, the WorldPop dataset has a more sparsed data and by making an overlap of the two reclassified maps, we were able to confirm this statement. This also allowed us to say that <strong>the WorldPop has more built cells than the GHS dataset</strong>.</p>
-							<p class="comments">With the help of the accuracy data, we were able to see that the <strong>thematic rasters have a higher user's accuracy for "Not Urban" areas</strong>.</p>
-							<p class="comments">Lastly, we were able to conclude that between the two datasets, <strong>the more accurate one is the WorldPop</strong>.</p>
-							<p class="comments">In the end, this sections highlited that the Worldpop dataset is more accurate when we evaluate accuracies independently from the GHS_pop.......</p>
+							<p class="comments">As already said in the Intercomparion section, the WorldPop dataset has a more sparsed data and by making an overlap of the two reclassified maps, we were able to confirm this statement. This also enabled us to state that <strong>the WorldPop has more built cells than the GHS dataset</strong>.</p>
+							<p class="comments">While the error matrices highlighted <strong>the large majority of cells incorrectly classified as "Urban" on the raster maps</strong>, the computation of accuracy indexes revealed a <strong>higher accuracy for the WorldPop dataset</strong>.
+							<p class="comments">Thus, this validation section brougth out a new conclusion regarding the accuracy of each dataset. The WorldPop one turned out to be more accurate than GHS_Pop, for all accuracy indexes we computed. Therefore, <strong>the WorldPop dataset seems to be better to reprint the reality we see on the ground</strong>. </p>
 						</div>
 					</section>
 
